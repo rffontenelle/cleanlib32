@@ -1,0 +1,99 @@
+#!/bin/bash
+#
+# cleanlib32 - Remove unneeded lib32 packages from your Arch Linux system
+#
+#   Copyright (C) 2012-2013 josephgbr <rafael.f.f1@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+PROGRAM=cleanlib32
+VERSION=0.2
+
+# gettext initialization
+export TEXTDOMAIN='cleanlib32'
+export TEXTDOMAINDIR='/usr/share/locale'
+
+PACMAN="/usr/bin/pacman"
+SUDO="/usr/bin/sudo"
+
+version()
+{
+  printf "\n"
+  printf "${PROGRAM} v${VERSION}\n"
+  printf "Copyright (C) 2012-2012 josephgbr <rafael.f.f1@gmail.com>\n"
+  printf "\n"
+  printf "$(gettext "This program may be freely redistributed under the terms of the GNU General Public License.")\n"
+  printf "\n"
+  exit 0
+}
+
+usage() {
+  printf "$(gettext "usage: %s [operation]")\n" "$PROGRAM"
+  printf "$(gettext "operations:")\n"
+  printf "$(gettext "        %s {-h --help}")\n" "$PROGRAM"
+  printf "$(gettext "        %s {-V --version}")\n" "$PROGRAM"
+  printf "\n"
+  printf "$(gettext "%s allows you to easily remove all lib32 packages installed as\ndependency of another, but are not need anymore. Target packages\nwill be displayed and will\nbe given you a chance to cancel, in\ncase you do not want to remove at least one\nof them.")\n" "$PROGRAM"
+  exit 0
+}
+
+# These two functions were based on makepkg from package 'pacman'
+GREEN='\033[32m';RED='\033[31m';ALL_OFF='\033[m'
+msg() {
+	local mesg=$1; shift
+	printf "${GREEN}==>${ALL_OFF} ${mesg}\n" "$@" >&2
+}
+error() {
+	local mesg=$1; shift
+	printf "${RED}==> $(gettext "ERROR:")${ALL_OFF} ${mesg}\n" "$@" >&2
+}
+
+if [ ! "$1" == "" ]; then
+	case $1 in
+	 -h|--help) usage;;
+	 -V|--version) version;;
+	 *) error "$(gettext "Invalid option: '%s'")\n" "$1"; exit 1;;
+	esac
+fi
+
+# Try Gather all targets. If there is none, then quit
+msg "$(gettext "Gathering list of uneeded packages to be uninstalled...")"
+PACKAGES=$(echo $(${PACMAN} -Qtd | grep lib32- | cut -d' ' -f1))
+if test ! "${PACKAGES}"; then
+	printf "$(gettext "No uneeded lib32 package installed. There is nothing to do. Leaving...")\n"
+	exit 1
+fi
+
+# Display targets to be removed, so user can decide wether this script should continue
+msg "$(gettext "Packages that will be uninstalled:")"
+printf "\n"
+for pkg in ${PACKAGES}; do printf "   ${pkg}\n"; done
+printf "\n"
+printf "$(gettext "Press N key to NOT uninstallation right now or any other key to continue.\n (waiting an answer from user...)")\n"
+read opt
+opt=$(echo ${opt} | tr [:lower:] [:upper:])
+[ "${opt}" == "N" ] && exit 0
+
+# Not quiting, so we are going to uninstall software, if user has root permissions.
+if [ "$(id -u)" == "0" ]; then
+	msg "$(gettext "Removing packages...")"
+	${PACMAN} -R ${PACKAGES} --noconfirm
+elif [ -x ${SUDO} ]; then
+	msg "$(gettext "Removing packages with sudo...")"
+	${SUDO} ${PACMAN} -R ${PACKAGES} --noconfirm
+else
+	error "$(gettext "You dont have root permission to uninstall packages.")"
+fi
+
