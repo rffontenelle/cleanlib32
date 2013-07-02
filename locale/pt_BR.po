@@ -1,0 +1,101 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Rafael Ferreira
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cleanlib32 0.1\n"
+"Report-Msgid-Bugs-To: rafael.f.f1@gmail.com\n"
+"POT-Creation-Date: 2013-07-02 17:58-0300\n"
+"PO-Revision-Date: 2013-07-02 19:07-0300\n"
+"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
+"Language-Team: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.5\n"
+
+#: cleanlib32.in:37
+msgid ""
+"This program may be freely redistributed under the terms of the GNU General "
+"Public License."
+msgstr ""
+"Este programa pode ser livremente redistribuído sub os termos da Licença "
+"Pública Geral GNU (GPL)."
+
+#: cleanlib32.in:43
+msgid "usage: %s [operation]"
+msgstr "uso: %s [operação]"
+
+#: cleanlib32.in:44
+msgid "operations:"
+msgstr "operações:"
+
+#: cleanlib32.in:45
+msgid "        %s {-h --help}"
+msgstr "        %s {-h --help}"
+
+#: cleanlib32.in:46
+msgid "        %s {-V --version}"
+msgstr "        %s {-V --version}"
+
+#: cleanlib32.in:48
+msgid ""
+"%s allows you to easily remove all lib32 packages installed as\\ndependency "
+"of another, but are not need anymore. Target packages\\nwill be displayed "
+"and will\\nbe given you a chance to cancel, in\\ncase you do not want to "
+"remove at least one\\nof them."
+msgstr ""
+"%s permite que você remova todos pacotes lib32 instalados como\n"
+"dependência de outro, mas não são mais necessários. Pacotes\n"
+"alvos serão exibidos e será dada a você a chance de cancelar,\n"
+"no caso de você não querer remover no mínimo um pacote."
+
+#: cleanlib32.in:60
+msgid "ERROR:"
+msgstr "ERRO:"
+
+#: cleanlib32.in:67
+msgid "Invalid option: '%s'"
+msgstr "Opção inválida: \"%s\""
+
+#: cleanlib32.in:72
+msgid "Gathering list of uneeded packages to be uninstalled..."
+msgstr ""
+"Este programa pode ser livremente redistribuído sub os termos da Licença "
+"Pública Geral GNU."
+
+#: cleanlib32.in:75
+msgid "No uneeded lib32 package installed. There is nothing to do. Leaving..."
+msgstr ""
+"Nenhuma pacote lib32 desnecessário instalado. Nada para fazer. Saindo..."
+
+#: cleanlib32.in:80
+msgid "Packages that will be uninstalled:"
+msgstr "Pacotes que serão desinstalados:"
+
+#: cleanlib32.in:84
+msgid ""
+"Press N key to NOT uninstallation right now or any other key to continue.\\n "
+"(waiting an answer from user...)"
+msgstr ""
+"Pressione a tecla N para NÃO desinstalar agora mesmo ou qualquer outra tecla "
+"para continuar. (esperando por uma resposta do usuário...)"
+
+#: cleanlib32.in:91
+msgid "Removing packages..."
+msgstr "Removendo pacotes..."
+
+#: cleanlib32.in:94
+msgid "Removing packages with sudo..."
+msgstr "Removendo pacotes com sudo..."
+
+#: cleanlib32.in:97
+msgid "You dont have root permission to uninstall packages."
+msgstr "Você não tem permissões de root para desinstalar pacotes."
+
+#~ msgid "See man %s(1) for more information on this package."
+#~ msgstr "Veja man %s(1) para mais informações sobre esse pacote."
