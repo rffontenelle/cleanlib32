@@ -1,0 +1,6 @@
+VERSION         DESCRIPTION
+-----------------------------------------------------------------------------
+0.2           - Added support for locales
+              - Fixed some typos and newline characteres missing
+0.1           - First release
+
