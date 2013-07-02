@@ -1,0 +1,15 @@
+#!/bin/bash
+
+name=cleanlib32
+version=$(grep ^VERSION cleanlib32.in | cut -d'=' -f 2)
+
+rm -rf /tmp/$name-$version
+mkdir /tmp/$name-$version || exit 1
+for file in COPYING Makefile cleanlib32.in README.md \
+            locale/*.po locale/*.pot scripts/*.sh.in; do
+    install -Dm644 $file /tmp/$name-$version/$file
+done
+
+cd /tmp
+tar --create --verbose --lzma --file "$OLDPWD"/$name-$version.tar.xz $name-$version
+md5sum "$OLDPWD"/$name-$version.tar.xz
