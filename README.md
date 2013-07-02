@@ -1,17 +1,26 @@
+# Clean lib32 packages!
 
-  NAME
-      cleanlib32 - Remove unneeded lib32 packages from your Arch Linux system
+Remove unneeded lib32 packages from your Arch Linux system.
 
-  DESCRITION
+# Description
 
-      Use cleanlib32 to easily remove lib32 packages marked as "installed as
-      dependency" of another, but not need anymore. Target packages will be
-      displayed and will $PROGRAM will give you a chance to cancel, in case
-      you do not want to remove at least one of them.
-      
-      Note that lib32 packages not marked as dependency will not
-      be removed.
+Use this command-line script when you feel you have too much lib32 packages installed and you want to cleanup your system.
 
-  AUTHOR
-      josephgbr <rafael.f.f1@gmail.com>
+Ok, but how does it work?
+
+Each time you run it, it will look for lib32 packages currently marked as "installed as dependency for another package" in the "Install Reason" (pacman -Qi <pkg>). If listed packages are desnecessary, it will uninstall them, with user's approval.
+
+You'll probably want to run this script more than once, as some lib32 might be not necessary anymore after uninstalling another one.
+
+P.S.: packages not marked as "installed as dependency" will not be listed neither removed.
+
+# Contributing
+
+If you wish to contribute to this software, please fork it on GitHub, push your change to a named branch, then send me a pull request.
+
+You can also help me reach an users in your language. With Transifex, you can help translate this software into your own language. 
+
+# License
+
+The source code is licensed under the GNU General Public License Version 3, which you can find in the COPYING file.
 
