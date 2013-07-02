@@ -16,11 +16,10 @@ P.S.: packages not marked as "installed as dependency" will not be listed neithe
 
 # Contributing
 
-If you wish to contribute to this software, please fork it on GitHub, push your change to a named branch, then send me a pull request.
+If you found it in [Arch User Repository] (https://aur.archlinux.org/packages/cleanlib32/) and decided that you want to contribute to this software, please fork it on [GitHub] (https://github.com/josephgbr/cleanlib32), push your change to a named branch, then send me a pull request.
 
-You can also help me reach an users in your language. With Transifex, you can help translate this software into your own language. 
+You can also help me reach an users in your language. With [Transifex] (https://www.transifex.com/projects/p/cleanlib32/), you can help translate this software into your own language.
 
 # License
 
-The source code is licensed under the GNU General Public License Version 3, which you can find in the COPYING file.
-
+The source code is licensed under the [GNU General Public License Version 3] (https://www.gnu.org/licenses/gpl.html), which you can find in the COPYING file.
