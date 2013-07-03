@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[cleanlib32.cleanlib32]
+file_filter = locale/.po
+source_file = locale/cleanlib32.pot
+source_lang = en
+type = PO
